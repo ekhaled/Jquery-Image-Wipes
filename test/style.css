@@ -1,0 +1,46 @@
+body{
+	width:100%;        
+	background-repeat:repeat-x; 
+	background-color: #ffffff;
+	font-family:  Verdana, Arial, Helvetica, sans-serif;
+	font-size: 62.5%;
+	line-height:1.8em;
+	color:#000000;
+	margin: 0px;
+	padding: 0px;
+}
+
+.clearit{
+	overflow:hidden;
+	height:0px;
+	width:100%;
+	clear:both;        
+}
+
+p,form,div{
+	margin:0px;        
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+#wrapper{
+	width:900px;
+	margin:0 auto;
+}
