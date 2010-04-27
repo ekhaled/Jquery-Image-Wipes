@@ -29,8 +29,18 @@
 			.append($imgs) // add the filtered images
 			.children(":gt(0)").hide() //hide all except the first one
 			.end()
-			.append("<div class='imageWipe_overlay' style='position:absolute;width:100%;height:100%'></div>");
 			//add overlay div and position it
+			.append("<div class='imageWipe_overlay' style='position:absolute;width:100%;height:100%'></div>");
+			
+			//add images data to expando
+			var srcs=[];
+			$imgs.each(function(){
+				srcs.push($(this.attr("src")));
+			});
+			
+			$(this).data("wipeImages.srcs",srcs)
+			.data("wipeImages.current",0)
+			.data("wipeImages.total",srcs.length);
 		});
 	}
 	
