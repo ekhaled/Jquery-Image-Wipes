@@ -40,3 +40,12 @@ html[xmlns] .clearfix {
 * html .clearfix {
 	height: 1%;
 }
+#wrapper{
+	width:900px;
+	margin:0 auto;
+}
+#imagesHolder{
+  width:900px;
+  height:600px;
+  overflow:hidden;
+}
