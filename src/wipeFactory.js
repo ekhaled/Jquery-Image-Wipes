@@ -74,7 +74,18 @@
       var _this=this;
       $.fn.wipeImages.config.animating=false;
       _this.el.append("<img src='"+_this.setUpVars.img+"'>");
-      _this.slices.remove();
+      if(_this.isGrouped){
+        var i,j,l=_this.slices.length;
+        for(i=0;i<l;i++){
+          var sl=_this.slices[i].length;
+          for(j=0;j<sl;j++){
+            $(_this.slices[i][j]).remove();
+          }
+        }
+      }else{
+        _this.slices.remove();
+      }
+      
       _this.el.find(":not(:last-child)").remove();
     },
     reverse:function(){
@@ -85,6 +96,7 @@
       for(var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
       this.slices=arr;
     },
+
     to2D:function(){
       var _this=this,slices=_this.slices,
       r=_this.setUpVars.rows,c=_this.setUpVars.cols,
@@ -103,14 +115,13 @@
         var z2 = (i < r) ? 0 : i - r + 1;
         var group=[];
         for (var j = i - z2; j >= z1; j--) {
-          group.push(slices.eq(arr[j][i - j]));
+          group.push(arr[j][i - j]);
         }
         grouped.push(group);
       }
       
-      this.slices=grouped;
+      this.groups=grouped;
       this.isGrouped=true;
-      
     },
     setup:function(){
       
@@ -118,10 +129,14 @@
     play:function(){
       var _this=this,done=0,buffer=0,increment=_this.setUpVars.duration/_this.slices.length;
       if(_this.isGrouped){
-        var i,l=_this.slices.length;
+        var i,l=_this.groups.length;
+        increment=_this.setUpVars.duration/_this.groups.length;
         for(i=0;i<l;i++){
-          var slice=$(_this.slices[i]);
-          console.log(slice);
+          var grp=_this.groups[i];
+          slice=_this.slices.eq(grp.shift());
+          while(grp.length > 0){
+            slice=slice.add(_this.slices.eq(grp.shift()));
+          }
           buffer +=increment;
           _this._animate(slice,_this.setUpVars.to,
             _this.setUpVars.duration,_this.setUpVars.easing,
