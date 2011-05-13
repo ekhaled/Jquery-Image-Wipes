@@ -73,6 +73,23 @@
       var wipe=new factory(el,opts);
       wipe.shuffle();  
       wipe.run();
-    }    
+    },
+    diagTopLeft:function(el){
+      var endHeight=el.height(),opts={
+        cols:8,rows:4
+      };
+      var wipe=new factory(el,opts);
+      wipe.to2D();  
+      wipe.run();
+    },
+    diagBottomRight:function(el){
+      var endHeight=el.height(),opts={
+        cols:8,rows:4
+      };
+      var wipe=new factory(el,opts);
+      wipe.reverse();
+      wipe.to2D();  
+      wipe.run();
+    }   
   });
 })(jQuery);
