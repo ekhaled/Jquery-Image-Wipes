@@ -1,19 +1,19 @@
 (function($){
-  var ns=$.fn.wipeImages;
+  var ns=$.fn.wipeImages,factory=ns.wipeFactory;
   $.fn.wipeImages.wipes=$.extend($.fn.wipeImages.wipes,{
     
     blindRight:function(el){
       var opts={
         cols:10,rows:1
       };
-      var wipe=new ns.wipeFactory(el,opts);
+      var wipe=new factory(el,opts);
       wipe.run();
     },
     blindLeft:function(el){
       var opts={
         cols:10,rows:1
       };
-      var wipe=new ns.wipeFactory(el,opts);
+      var wipe=new factory(el,opts);
       wipe.reverse();   
       wipe.run();
     },
@@ -21,14 +21,14 @@
       var opts={
         cols:1,rows:5
       };
-      var wipe=new ns.wipeFactory(el,opts);
+      var wipe=new factory(el,opts);
       wipe.run();
     },
     blindBottom:function(el){
       var opts={
         cols:1,rows:5
       };
-      var wipe=new ns.wipeFactory(el,opts);
+      var wipe=new factory(el,opts);
       wipe.reverse();   
       wipe.run();
     },
@@ -42,7 +42,7 @@
           height:endHeight + "px"
         }
       };
-      var wipe=new ns.wipeFactory(el,opts);     
+      var wipe=new factory(el,opts);     
       wipe.run();
     },
     randomRain:function(el){
@@ -55,7 +55,7 @@
           height:endHeight + "px"
         }
       };
-      var wipe=new ns.wipeFactory(el,opts);
+      var wipe=new factory(el,opts);
       wipe.shuffle();   
       wipe.run();
     },
@@ -63,14 +63,14 @@
       var endHeight=el.height(),opts={
         cols:8,rows:4
       };
-      var wipe=new $.fn.wipeImages.wipeFactory(el,opts);  
+      var wipe=new factory(el,opts);  
       wipe.run();
     },
     randomBoxes:function(el){
       var endHeight=el.height(),opts={
         cols:8,rows:4
       };
-      var wipe=new $.fn.wipeImages.wipeFactory(el,opts);
+      var wipe=new factory(el,opts);
       wipe.shuffle();  
       wipe.run();
     }    

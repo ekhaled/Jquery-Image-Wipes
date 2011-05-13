@@ -43,20 +43,19 @@
 		    
 		  for(var r = 0; r < setUpVars.rows; r++){
 		    for(var c= 0; c < setUpVars.cols; c++){
+		      from=$.extend({
+	          left:(wd*c) + "px",
+            top: (ht*r) + "px",
+            height: (ht) + "px",
+	        },setUpVars.from);
 		      if(c==setUpVars.cols-1){
 		        from=$.extend({
-		          left:(wd*c) + "px",
-              top: (ht*r) + "px",
-              width: (e_wd - (wd*c)) + "px",
-              height: (ht) + "px",
-		        },setUpVars.from);
+              width: (e_wd - (wd*c)) + "px"
+		        },from);
 	        }else{
 	          from=$.extend({
-		          left:(wd*c) + "px",
-              top: (ht*r) + "px",
-              width: (wd) + "px",
-              height: (ht) + "px",
-		        },setUpVars.from);
+              width: (wd) + "px"
+		        },from);
 	        } 
 	        el.append(
 	          $("<div>",{
