@@ -111,7 +111,7 @@
     },
     setup:function(){},
     play:function(){
-      var _this=this,done=0,buffer=0,increment=_this.setUpVars.duration/_this.slices.length;
+      var _this=this,done=0,buffer=0,increment=_this.setUpVars.duration/_this.slices.length,slice;
       if(_this.isGrouped){
         var i,l=_this.groups.length;
         increment=_this.setUpVars.duration/_this.groups.length;
