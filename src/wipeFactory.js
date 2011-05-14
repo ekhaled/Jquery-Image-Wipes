@@ -96,36 +96,6 @@
       for(var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
       this.slices=arr;
     },
-
-    to2D:function(){
-      var _this=this,slices=_this.slices,
-      r=_this.setUpVars.rows,c=_this.setUpVars.cols,
-      grouped=[],arr=[],b=0;
-      
-      for(var i = 0; i < r; i++) {
-        arr[i] = new Array(c);
-        for(var j = 0; j < c; j++) {
-            arr[i][j] = b;
-            b++;
-        }
-      }
-      
-      for (var i = 0; i < r + c - 1; i++) {
-        var z1 = (i < c) ? 0 : i - c + 1;
-        var z2 = (i < r) ? 0 : i - r + 1;
-        var group=[];
-        for (var j = i - z2; j >= z1; j--) {
-          group.push(arr[j][i - j]);
-        }
-        grouped.push(group);
-      }
-      
-      this.groups=grouped;
-      this.isGrouped=true;
-    },
-    setup:function(){
-      
-    },
     play:function(){
       var _this=this,done=0,buffer=0,increment=_this.setUpVars.duration/_this.slices.length;
       if(_this.isGrouped){
