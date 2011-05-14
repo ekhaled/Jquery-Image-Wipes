@@ -120,6 +120,15 @@
       wipe.isGrouped=true; 
       wipe.run();
     },
+    diagTopRight:function(el){
+      var endHeight=el.height(),opts={
+        cols:8,rows:4
+      };
+      var wipe=new factory(el,opts);
+      wipe.groups=box2D(opts.rows,opts.cols,true);
+      wipe.isGrouped=true; 
+      wipe.run();
+    },
     diagBottomRight:function(el){
       var endHeight=el.height(),opts={
         cols:8,rows:4
@@ -127,6 +136,16 @@
       var wipe=new factory(el,opts);
       wipe.reverse();
       wipe.groups=box2D(opts.rows,opts.cols);
+      wipe.isGrouped=true;   
+      wipe.run();
+    },
+    diagBottomLeft:function(el){
+      var endHeight=el.height(),opts={
+        cols:8,rows:4
+      };
+      var wipe=new factory(el,opts);
+      wipe.reverse();
+      wipe.groups=box2D(opts.rows,opts.cols,true);
       wipe.isGrouped=true;   
       wipe.run();
     }   
