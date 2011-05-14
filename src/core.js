@@ -2,19 +2,20 @@
   $.fn.wipeImages=function(opts){
     return init.apply(this,[opts]);
   }
+  var namespace=$.fn.wipeImages;
   
   function init(opts){
-    $.fn.wipeImages.config=$.extend($.fn.wipeImages.config,opts);
-    $.fn.wipeImages.config.animating=false;// flag to check if animation is running
-    $.fn.wipeImages.config.className=$.fn.wipeImages.config.className || "wipebox";// make sure a class name is set
-    $.fn.wipeImages.pausePlaying=false;
-    $.fn.wipeImages.images=[];
+    namespace.config=$.extend(namespace.config,opts);
+    namespace.config.animating=false;// flag to check if animation is running
+    namespace.config.className=namespace.config.className || "wipebox";// make sure a class name is set
+    namespace.pausePlaying=false;
+    namespace.images=[];
 		return start(this);
   }
   
   function start(el){
-    var opts=$.fn.wipeImages.config,
-    wipes=$.fn.wipeImages.wipes,wipeString=[];
+    var opts=namespace.config,
+    wipes=namespace.wipes,wipeString=[];
     
     for(var k in wipes){
       wipeString.push(k);
@@ -28,8 +29,8 @@
         srcs.push($(this).attr("src"));
       });
       
-      $.fn.wipeImages.images.srcs=srcs;
-      $.fn.wipeImages.images.current=-1;
+      namespace.images.srcs=srcs;
+      namespace.images.current=-1;
       
       
       imgs.remove();
@@ -38,16 +39,16 @@
       if(opts.pauseOnHover){
         _this
         .bind("mouseenter",function(){
-  				$.fn.wipeImages.pausePlaying=true;
+  				namespace.pausePlaying=true;
   			})
   			.bind("mouseleave",function(){
-  				$.fn.wipeImages.pausePlaying=false;
+  				namespace.pausePlaying=false;
   			});
       }
       
       if(opts.autoPlay){
         setInterval(function(){
-          if(!$.fn.wipeImages.pausePlaying && !$.fn.wipeImages.config.animating){
+          if(!namespace.pausePlaying && !namespace.config.animating){
             run();
           }
         },opts.delay)
