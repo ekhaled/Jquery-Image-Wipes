@@ -70,6 +70,17 @@
 		    }
 		  }
     },
+     _animate:function(slice,to,duration,easing,index,total,buffer,callback){
+      (function(slice,to,duration,easing,index,total,buffer,callback){
+        setTimeout(function(){
+          slice.animate(to,duration,easing,function(){
+            if(index==(total-1)){
+              callback();
+            }
+          })
+        },buffer);
+      })(slice,to,duration,easing,index,total,buffer,callback);
+    },
     cleanup:function(){
       var _this=this;
       $.fn.wipeImages.config.animating=false;
@@ -125,17 +136,6 @@
         });
       }
       
-    },
-    _animate:function(slice,to,duration,easing,index,total,buffer,callback){
-      (function(slice,to,duration,easing,index,total,buffer,callback){
-        setTimeout(function(){
-          slice.animate(to,duration,easing,function(){
-            if(index==(total-1)){
-              callback();
-            }
-          })
-        },buffer);
-      })(slice,to,duration,easing,index,total,buffer,callback);
     },
     run:function(){
       this.setup();
