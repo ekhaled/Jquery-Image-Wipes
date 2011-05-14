@@ -71,7 +71,7 @@
     },
     rain:function(el){
       var endHeight=el.height(),opts={
-        cols:30,rows:1,
+        cols:20,rows:1,
         from:{
           height:"0px"
         },
@@ -84,7 +84,7 @@
     },
     randomRain:function(el){
       var endHeight=el.height(),opts={
-        cols:30,rows:1,
+        cols:20,rows:1,
         from:{
           height:"0px"
         },
