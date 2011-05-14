@@ -30,11 +30,10 @@
       });
       
       namespace.images.srcs=srcs;
-      namespace.images.current=-1;
+      namespace.images.current=0;
       
       
-      imgs.remove();
-      run("default");
+      imgs.filter(":gt(0)").remove();
       
       if(opts.pauseOnHover){
         _this
