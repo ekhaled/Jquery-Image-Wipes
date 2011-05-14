@@ -97,7 +97,7 @@
       wipe.run();
     },
     boxes:function(el){
-      var endHeight=el.height(),opts={
+      var opts={
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);  
@@ -112,7 +112,7 @@
       wipe.run();
     },
     diagTopLeft:function(el){
-      var endHeight=el.height(),opts={
+      var opts={
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
@@ -121,7 +121,7 @@
       wipe.run();
     },
     diagTopRight:function(el){
-      var endHeight=el.height(),opts={
+      var opts={
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
@@ -130,7 +130,7 @@
       wipe.run();
     },
     diagBottomRight:function(el){
-      var endHeight=el.height(),opts={
+      var opts={
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
@@ -140,7 +140,7 @@
       wipe.run();
     },
     diagBottomLeft:function(el){
-      var endHeight=el.height(),opts={
+      var opts={
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
