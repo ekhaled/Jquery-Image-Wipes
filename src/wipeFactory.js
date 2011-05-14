@@ -1,11 +1,13 @@
 (function($){
-  var wipeFactory=function(el,opts){
-    this.el=el;
-    this.config=$.fn.wipeImages.config;
-    this.images=$.fn.wipeImages.images.srcs;
-    this.isGrouped=false;
+  var namespace=$.fn.wipeImages,
+  wipeFactory=function(el,opts){
+  	var _this=this;
+    _this.el=el;
+    _this.config=namespace.config;
+    _this.images=namespace.images.srcs;
+    _this.isGrouped=false;
     
-    this.setUpVars=$.extend({
+    _this.setUpVars=$.extend({
       cols:1,
       rows:1,
       duration:this.config.duration,
@@ -18,19 +20,19 @@
       }
     },opts);
     
-    var len=this.images.length,
-    current=$.fn.wipeImages.images.current;
+    var len=_this.images.length,
+    current=namespace.images.current;
     current++;
     if(current > (len-1)){
       current=0;
     }
-    this.setUpVars.img=this.images[current];
-    $.fn.wipeImages.images.current=current;
+    _this.setUpVars.img=_this.images[current];
+    namespace.images.current=current;
     
-    this._createSlices();
+    _this._createSlices();
     
-    this.slices=this.el.find("." + this.config.className);
-    $.fn.wipeImages.config.animating=true;
+    _this.slices=_this.el.find("." + this.config.className);
+    namespace.config.animating=true;
   }
   wipeFactory.prototype={
     _createSlices:function(){
@@ -83,7 +85,7 @@
     },
     cleanup:function(){
       var _this=this;
-      $.fn.wipeImages.config.animating=false;
+      namespace.config.animating=false;
       _this.el.append("<img src='"+_this.setUpVars.img+"'>");
       if(_this.isGrouped){
         var i,j,l=_this.slices.length;
@@ -143,15 +145,15 @@
     }
   }
   
-  $.fn.wipeImages.wipeFactory=wipeFactory;
+  namespace.wipeFactory=wipeFactory;
   
-  $.fn.wipeImages.wipes={
+  namespace.wipes={
     "default":function(el){
-      var wipe=new $.fn.wipeImages.wipeFactory(el);
+      var wipe=new namespace.wipeFactory(el);
       wipe.run();
     },
     fadeIn:function(el){
-      var wipe=new $.fn.wipeImages.wipeFactory(el,{
+      var wipe=new namespace.wipeFactory(el,{
         cols:10,
         rows:20
       });
