@@ -124,14 +124,23 @@
       wipe.isGrouped=true;   
       wipe.run();
     },
-    centerFade:function(el){
+    fromCenter:function(el){
       var opts={
-        cols:9,rows:4
+        cols:9,rows:1
       };
       var wipe=new factory(el,opts);
       wipe.groups=fromCenter(opts.rows,opts.cols);
       wipe.isGrouped=true;   
       wipe.run();
-    }   
+    },
+    toCenter:function(el){
+      var opts={
+        cols:9,rows:1
+      };
+      var wipe=new factory(el,opts);
+      wipe.groups=fromCenter(opts.rows,opts.cols).reverse();
+      wipe.isGrouped=true;   
+      wipe.run();
+    }
   });
 })(jQuery);
