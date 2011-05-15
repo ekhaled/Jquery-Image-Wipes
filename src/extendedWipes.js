@@ -1,6 +1,6 @@
 (function($){
 
-  function _slicesToArray(r,c){
+  var  _slicesToArray=function(r,c){
     var arr=[],b=0;
     
     for(var i = 0; i < r; i++) {
@@ -11,9 +11,8 @@
       }
     }
     return arr;
-  }
-
-  function groupCentrally(r,c){
+  },
+  groupCentrally=function(r,c){
     var grouped=[],arr=_slicesToArray(r,c),columnLength,
     isEven=(((columnLength = arr[0].length) % 2) == 0);
     
@@ -52,9 +51,8 @@
     }
     
     return grouped;
-  }
-
-  function groupDiagonally(r,c,rev){
+  },
+  groupDiagonally=function(r,c,rev){
     var grouped=[],arr=_slicesToArray(r,c);
     
     if(rev){
@@ -80,7 +78,7 @@
     }
    
     return grouped;
-  }
+  };
 
 
   var ns=$.fn.wipeImages,factory=ns.wipeFactory;
