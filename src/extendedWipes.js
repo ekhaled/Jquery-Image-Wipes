@@ -54,6 +54,7 @@
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
+      wipe.reverse();
       wipe.groups=box2D(opts.rows,opts.cols,true);
       wipe.isGrouped=true; 
       wipe.run();
@@ -73,7 +74,6 @@
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
-      wipe.reverse();
       wipe.groups=box2D(opts.rows,opts.cols,true);
       wipe.isGrouped=true;   
       wipe.run();
