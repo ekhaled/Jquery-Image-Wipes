@@ -13,7 +13,7 @@
     return arr;
   }
 
-  function fromCenter(r,c){
+  function groupCentrally(r,c){
     var grouped=[],arr=_slicesToArray(r,c),columnLength,
     isEven=(((columnLength = arr[0].length) % 2) == 0);
     
@@ -54,7 +54,7 @@
     return grouped;
   }
 
-  function box2D(r,c,rev){
+  function groupDiagonally(r,c,rev){
     var grouped=[],arr=_slicesToArray(r,c);
     
     if(rev){
@@ -91,7 +91,7 @@
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
-      wipe.groups=box2D(opts.rows,opts.cols);
+      wipe.groups=groupDiagonally(opts.rows,opts.cols);
       wipe.isGrouped=true; 
       wipe.run();
     },
@@ -100,7 +100,7 @@
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
-      wipe.groups=box2D(opts.rows,opts.cols,true).reverse();
+      wipe.groups=groupDiagonally(opts.rows,opts.cols,true).reverse();
       wipe.isGrouped=true; 
       wipe.run();
     },
@@ -109,7 +109,7 @@
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
-      wipe.groups=box2D(opts.rows,opts.cols).reverse();
+      wipe.groups=groupDiagonally(opts.rows,opts.cols).reverse();
       wipe.isGrouped=true;   
       wipe.run();
     },
@@ -118,7 +118,7 @@
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
-      wipe.groups=box2D(opts.rows,opts.cols,true);
+      wipe.groups=groupDiagonally(opts.rows,opts.cols,true);
       wipe.isGrouped=true;   
       wipe.run();
     },
@@ -127,7 +127,7 @@
         cols:9,rows:1
       };
       var wipe=new factory(el,opts);
-      wipe.groups=fromCenter(opts.rows,opts.cols);
+      wipe.groups=groupCentrally(opts.rows,opts.cols);
       wipe.isGrouped=true;   
       wipe.run();
     },
@@ -136,7 +136,7 @@
         cols:9,rows:1
       };
       var wipe=new factory(el,opts);
-      wipe.groups=fromCenter(opts.rows,opts.cols).reverse();
+      wipe.groups=groupCentrally(opts.rows,opts.cols).reverse();
       wipe.isGrouped=true;   
       wipe.run();
     }
