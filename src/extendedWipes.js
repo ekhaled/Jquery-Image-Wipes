@@ -1,7 +1,7 @@
 (function($){
 
-  function box2D(r,c,rev){
-    var grouped=[],arr=[],b=0;
+  function _slicesToArray(r,c){
+    var arr=[],b=0;
     
     for(var i = 0; i < r; i++) {
       arr[i] = new Array(c);
@@ -10,6 +10,11 @@
           b++;
       }
     }
+    return arr;
+  }
+
+  function box2D(r,c,rev){
+    var grouped=[],arr=_slicesToArray(r,c);
     
     if(rev){
       for (var i = 1 - r; i < c; i++) {
