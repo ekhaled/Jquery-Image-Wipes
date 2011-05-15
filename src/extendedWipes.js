@@ -13,6 +13,47 @@
     return arr;
   }
 
+  function fromCenter(r,c){
+    var grouped=[],arr=_slicesToArray(r,c),columnLength,
+    isEven=(((columnLength = arr[0].length) % 2) == 0);
+    
+    if(isEven){
+      var middle=Math.floor((columnLength-1)/2);
+      var group=[];
+      for(var i=0;i<r;i++){
+        group.push(middle + (columnLength*i), middle + (columnLength*i)+1);
+      }
+      grouped.push(group);
+      var numTimes=group[0],k=0;
+      for(var j=numTimes-1;j>-1;j--){
+        var gr=[];
+        k=k+2;
+        for(var i=0;i<r;i++){
+          gr.push(j+(i*columnLength),j+(i*columnLength)+k+1);
+        }
+        grouped.push(gr);
+      }
+    }else{
+      var middle=(columnLength-1)/2;
+      var group=[];
+      for(var i=0;i<r;i++){
+        group.push(middle + (columnLength*i));
+      }
+      grouped.push(group);
+      var numTimes=group[0],k=0;
+      for(var j=numTimes-1;j>-1;j--){
+        var gr=[];
+        k=k+2;
+        for(var i=0;i<r;i++){
+          gr.push(j+(i*columnLength),j+(i*columnLength)+k);
+        }
+        grouped.push(gr);
+      }
+    }
+    
+    return grouped;
+  }
+
   function box2D(r,c,rev){
     var grouped=[],arr=_slicesToArray(r,c);
     
@@ -80,6 +121,15 @@
       };
       var wipe=new factory(el,opts);
       wipe.groups=box2D(opts.rows,opts.cols,true);
+      wipe.isGrouped=true;   
+      wipe.run();
+    },
+    centerFade:function(el){
+      var opts={
+        cols:9,rows:4
+      };
+      var wipe=new factory(el,opts);
+      wipe.groups=fromCenter(opts.rows,opts.cols);
       wipe.isGrouped=true;   
       wipe.run();
     }   
