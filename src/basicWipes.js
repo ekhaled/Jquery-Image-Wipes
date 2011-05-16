@@ -1,7 +1,7 @@
 (function($){
   var ns=$.fn.wipeImages,factory=ns.wipeFactory;
   $.fn.wipeImages.wipes=$.extend($.fn.wipeImages.wipes,{
-    
+
     blindRight:function(el){
       var opts={
         cols:10,rows:1
@@ -14,7 +14,7 @@
         cols:10,rows:1
       };
       var wipe=new factory(el,opts);
-      wipe.reverse();   
+      wipe.reverse();
       wipe.run();
     },
     blindTop:function(el){
@@ -29,7 +29,7 @@
         cols:1,rows:5
       };
       var wipe=new factory(el,opts);
-      wipe.reverse();   
+      wipe.reverse();
       wipe.run();
     },
     rain:function(el){
@@ -42,7 +42,7 @@
           height:endHeight + "px"
         }
       };
-      var wipe=new factory(el,opts);     
+      var wipe=new factory(el,opts);
       wipe.run();
     },
     randomRain:function(el){
@@ -56,14 +56,14 @@
         }
       };
       var wipe=new factory(el,opts);
-      wipe.shuffle();   
+      wipe.shuffle();
       wipe.run();
     },
     boxes:function(el){
       var opts={
         cols:8,rows:4
       };
-      var wipe=new factory(el,opts);  
+      var wipe=new factory(el,opts);
       wipe.run();
     },
     randomBoxes:function(el){
@@ -71,8 +71,8 @@
         cols:8,rows:4
       };
       var wipe=new factory(el,opts);
-      wipe.shuffle();  
+      wipe.shuffle();
       wipe.run();
-    } 
+    }
   });
 })(jQuery);

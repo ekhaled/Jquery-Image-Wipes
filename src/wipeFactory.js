@@ -1,12 +1,12 @@
 (function($){
   var namespace=$.fn.wipeImages,
   wipeFactory=function(el,opts){
-  	var _this=this;
+    var _this=this;
     _this.el=el;
     _this.config=namespace.config;
     _this.images=namespace.images.srcs;
     _this.isGrouped=false;
-    
+
     _this.setUpVars=$.extend({
       cols:1,
       rows:1,
@@ -19,7 +19,7 @@
         opacity:1
       }
     },opts);
-    
+
     var len=_this.images.length,
     current=namespace.images.current;
     current++;
@@ -28,9 +28,9 @@
     }
     _this.setUpVars.img=_this.images[current];
     namespace.images.current=current;
-    
+
     _this._createSlices();
-    
+
     _this.slices=_this.el.find("." + this.config.className);
     namespace.config.animating=true;
   }
@@ -42,7 +42,7 @@
       setUpVars=_this.setUpVars,
 		  wd=Math.round(e_wd/setUpVars.cols),
 		  ht=Math.round(e_ht/setUpVars.rows),from={};
-		    
+
 		  for(var r = 0; r < setUpVars.rows; r++){
 		    for(var c= 0; c < setUpVars.cols; c++){
 		      from=$.extend({
@@ -58,7 +58,7 @@
 	          from=$.extend({
               width: (wd) + "px"
 		        },from);
-	        } 
+	        }
 	        el.append(
 	          $("<div>",{
 	            "class":className,
@@ -68,7 +68,7 @@
 	            }
 	          }).css(from)
 	        );
-		      
+
 		    }
 		  }
     },
@@ -98,7 +98,7 @@
       }else{
         _this.slices.remove();
       }
-      
+
       _this.el.find(":not(:last-child)").remove();
     },
     reverse:function(){
@@ -137,16 +137,16 @@
             function(){_this.cleanup();});
         });
       }
-      
+
     },
     run:function(){
       this.setup();
       this.play();
     }
   }
-  
+
   namespace.wipeFactory=wipeFactory;
-  
+
   namespace.wipes={
     "default":function(el){
       var wipe=new namespace.wipeFactory(el);
@@ -157,9 +157,9 @@
         cols:10,
         rows:20
       });
-      wipe.reverse();      
+      wipe.reverse();
       wipe.run();
     }
   };
-  
+
 })(jQuery);
