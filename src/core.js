@@ -26,7 +26,10 @@
       imgs=_this.find("img"),srcs=[];
 
       imgs.each(function(){
-        srcs.push($(this).attr("src"));
+        //preload images
+        var _src=$(this).attr("src"),_i=new Image();
+        _i.src=_src;
+        srcs.push(_src);
       });
 
       namespace.images.srcs=srcs;
