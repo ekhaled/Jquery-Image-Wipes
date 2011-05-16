@@ -36,7 +36,7 @@
       namespace.images.current=0;
 
 
-      imgs.filter(":gt(0)").remove();
+      imgs.filter(":gt(0)").hide();
 
       if(opts.pauseOnHover){
         _this
