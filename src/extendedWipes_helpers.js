@@ -1,7 +1,3 @@
-
-
-});// this is a cocatenation artifact from previous file
-
 var  _slicesToArray=function(r,c){
   var arr=[],b=0;
 
