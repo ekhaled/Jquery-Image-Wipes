@@ -16,8 +16,8 @@ CORE_FILES    = [
 
 EXTRA_FILES    = [
   File.join(SRC_DIR,'extendedWipes_intro.js'),
-  File.join(SRC_DIR,'extendedWipes_helpers.js'),
   File.join(SRC_DIR,'extendedWipes.js'),
+  File.join(SRC_DIR,'extendedWipes_helpers.js'),
   File.join(SRC_DIR,'extendedWipes_outro.js'),
 ]
 
