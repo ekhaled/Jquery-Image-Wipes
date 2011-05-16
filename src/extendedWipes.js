@@ -1,60 +1,67 @@
+
   var ns=$.fn.wipeImages,factory=ns.wipeFactory;
+
+  //Diagonal Fade Animations
+  function diagonals(){
+    var opts={
+      cols:8,rows:4
+    },wipe;
+    function _run(wipe,rev1,rev2){
+      wipe.isGrouped=true;
+      wipe.groups=groupDiagonally(opts.rows,opts.cols,rev1);
+      if(rev2) {wipe.groups.reverse();}
+      wipe.run();
+    }
+    return {
+      diagTopLeft:function(el){
+        wipe=new factory(el,opts);
+        _run(wipe);
+      },
+      diagTopRight:function(el){
+        wipe=new factory(el,opts);
+        _run(wipe,true,true);
+      },
+      diagBottomRight:function(el){
+        wipe=new factory(el,opts);
+        _run(wipe,false,true);
+      },
+      diagBottomLeft:function(el){
+        wipe=new factory(el,opts);
+        _run(wipe,true,false);
+      }
+    };
+  }
+
+  ns.wipes=$.extend(ns.wipes,diagonals());
+
+  //From Center Fade Animations
+  function fromCenters(){
+    var opts={
+      cols:10,rows:1
+    },wipe;
+    function _run(wipe,rev){
+      wipe.isGrouped=true;
+      wipe.groups=groupCentrally(opts.rows,opts.cols,rev);
+      if(rev) {wipe.groups.reverse();}
+      wipe.run();
+    }
+    return {
+      fromCenter:function(el){
+        wipe=new factory(el,opts);
+        _run(wipe);
+      },
+      toCenter:function(el){
+        opts.cols=9;
+        wipe=new factory(el,opts);
+        _run(wipe,true);
+      }
+    };
+  }
+
+  ns.wipes=$.extend(ns.wipes,fromCenters());
+
   $.fn.wipeImages.wipes=$.extend($.fn.wipeImages.wipes,{
 
-    diagTopLeft:function(el){
-      var opts={
-        cols:8,rows:4
-      };
-      var wipe=new factory(el,opts);
-      wipe.groups=groupDiagonally(opts.rows,opts.cols);
-      wipe.isGrouped=true;
-      wipe.run();
-    },
-    diagTopRight:function(el){
-      var opts={
-        cols:8,rows:4
-      };
-      var wipe=new factory(el,opts);
-      wipe.groups=groupDiagonally(opts.rows,opts.cols,true).reverse();
-      wipe.isGrouped=true;
-      wipe.run();
-    },
-    diagBottomRight:function(el){
-      var opts={
-        cols:8,rows:4
-      };
-      var wipe=new factory(el,opts);
-      wipe.groups=groupDiagonally(opts.rows,opts.cols).reverse();
-      wipe.isGrouped=true;
-      wipe.run();
-    },
-    diagBottomLeft:function(el){
-      var opts={
-        cols:8,rows:4
-      };
-      var wipe=new factory(el,opts);
-      wipe.groups=groupDiagonally(opts.rows,opts.cols,true);
-      wipe.isGrouped=true;
-      wipe.run();
-    },
-    fromCenter:function(el){
-      var opts={
-        cols:10,rows:1
-      };
-      var wipe=new factory(el,opts);
-      wipe.groups=groupCentrally(opts.rows,opts.cols);
-      wipe.isGrouped=true;
-      wipe.run();
-    },
-    toCenter:function(el){
-      var opts={
-        cols:9,rows:1
-      };
-      var wipe=new factory(el,opts);
-      wipe.groups=groupCentrally(opts.rows,opts.cols).reverse();
-      wipe.isGrouped=true;
-      wipe.run();
-    },
     pyramidInvertedCollapse:function(el){
       var endHeight=el.height(),opts={
         cols:19,rows:1,
