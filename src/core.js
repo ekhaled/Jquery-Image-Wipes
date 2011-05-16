@@ -88,7 +88,7 @@
 		delay:5000,
 		duration:400,// duration of animation
 		easing:"swing",
-		pauseOnHover:true, // pauses the animation when mouse is hovered
+		pauseOnHover:false, // pauses the animation when mouse is hovered
 		className:"wipebox" // the class name applied to all appended boxes
 	}
 
