@@ -54,5 +54,71 @@
       wipe.groups=groupCentrally(opts.rows,opts.cols).reverse();
       wipe.isGrouped=true;
       wipe.run();
+    },
+    pyramidInvertedCollapse:function(el){
+      var endHeight=el.height(),opts={
+        cols:19,rows:1,
+        from:{
+          height:"0px"
+        },
+        to:{
+          height:endHeight + "px"
+        }
+      };
+      var wipe=new factory(el,opts);
+      wipe.groups=groupCentrally(opts.rows,opts.cols);
+      wipe.isGrouped=true;
+      wipe.run();
+    },
+    pyramidCollapse:function(el){
+      var endHeight=el.height(),opts={
+        cols:19,rows:1,
+        from:{
+          height:"0px"
+        },
+        to:{
+          height:endHeight + "px"
+        }
+      };
+      var wipe=new factory(el,opts);
+      wipe.groups=groupCentrally(opts.rows,opts.cols).reverse();
+      wipe.isGrouped=true;
+      wipe.run();
+    },
+    pyramidInvertedGrow:function(el){
+      var endHeight=el.height(),opts={
+        cols:19,rows:1,
+        from:{
+          height:"0px",
+          bottom:"0px",
+          top:"auto"
+        },
+        to:{
+          height:endHeight + "px"
+        }
+      };
+      var wipe=new factory(el,opts);
+      wipe.groups=groupCentrally(opts.rows,opts.cols);
+      wipe.isGrouped=true;
+      wipe.run();
+    },
+    pyramidGrow:function(el){
+      var endHeight=el.height(),opts={
+        cols:19,rows:1,
+        from:{
+          height:"0px",
+          bottom:"0px",
+          top:"auto"
+        },
+        to:{
+          height:endHeight + "px"
+        }
+      };
+      var wipe=new factory(el,opts);
+      wipe.groups=groupCentrally(opts.rows,opts.cols).reverse();
+      wipe.isGrouped=true;
+      wipe.run();
     }
+
+
   });
