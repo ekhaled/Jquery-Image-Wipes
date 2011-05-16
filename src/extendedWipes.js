@@ -98,7 +98,7 @@
         }
       };
       var wipe=new factory(el,opts);
-      wipe.groups=groupCentrally(opts.rows,opts.cols);
+      wipe.groups=groupCentrally(opts.rows,opts.cols).reverse();
       wipe.isGrouped=true;
       wipe.run();
     },
@@ -115,7 +115,7 @@
         }
       };
       var wipe=new factory(el,opts);
-      wipe.groups=groupCentrally(opts.rows,opts.cols).reverse();
+      wipe.groups=groupCentrally(opts.rows,opts.cols);
       wipe.isGrouped=true;
       wipe.run();
     }
