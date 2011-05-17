@@ -6,7 +6,7 @@
     var opts={
       cols:8,rows:4
     },wipe;
-    function _run(wipe,rev1,rev2){
+    function _run(rev1,rev2){
       wipe.isGrouped=true;
       wipe.groups=groupDiagonally(opts.rows,opts.cols,rev1);
       if(rev2) {wipe.groups.reverse();}
@@ -15,19 +15,19 @@
     return {
       diagTopLeft:function(el){
         wipe=new factory(el,opts);
-        _run(wipe);
+        _run();
       },
       diagTopRight:function(el){
         wipe=new factory(el,opts);
-        _run(wipe,true,true);
+        _run(true,true);
       },
       diagBottomRight:function(el){
         wipe=new factory(el,opts);
-        _run(wipe,false,true);
+        _run(false,true);
       },
       diagBottomLeft:function(el){
         wipe=new factory(el,opts);
-        _run(wipe,true,false);
+        _run(true,false);
       }
     };
   }
@@ -39,7 +39,7 @@
     var opts={
       cols:10,rows:1
     },wipe;
-    function _run(wipe,rev){
+    function _run(rev){
       wipe.isGrouped=true;
       wipe.groups=groupCentrally(opts.rows,opts.cols);
       if(rev) {wipe.groups.reverse();}
@@ -48,12 +48,12 @@
     return {
       fromCenter:function(el){
         wipe=new factory(el,opts);
-        _run(wipe);
+        _run();
       },
       toCenter:function(el){
         opts.cols=9;
         wipe=new factory(el,opts);
-        _run(wipe,true);
+        _run(true);
       }
     };
   }
@@ -68,7 +68,7 @@
         height:"0px"
       }
     },wipe;
-    function _run(wipe,rev){
+    function _run(rev){
       wipe.isGrouped=true;
       wipe.groups=groupCentrally(opts.rows,opts.cols);
       if(rev) {wipe.groups.reverse();}
@@ -79,13 +79,13 @@
         var endHeight=el.height();
         opts.to={height:endHeight + "px"};
         wipe=new factory(el,opts);
-        _run(wipe);
+        _run();
       },
       pyramidCollapse:function(el){
         var endHeight=el.height();
         opts.to={height:endHeight + "px"};
         wipe=new factory(el,opts);
-        _run(wipe,true);
+        _run(true);
       },
       pyramidInvertedGrow:function(el){
         var endHeight=el.height();
@@ -100,7 +100,7 @@
           }
         });
         wipe=new factory(el,opts);
-        _run(wipe,true);
+        _run(true);
       },
       pyramidGrow:function(el){
         var endHeight=el.height();
@@ -115,7 +115,7 @@
           }
         });
         wipe=new factory(el,opts);
-        _run(wipe);
+        _run();
       }
     };
   }
