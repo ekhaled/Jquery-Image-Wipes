@@ -32,8 +32,6 @@
     };
   }
 
-  ns.wipes=$.extend(ns.wipes,diagonals());
-
   //From Center Fade Animations
   function fromCenters(){
     var opts={
@@ -57,8 +55,6 @@
       }
     };
   }
-
-  ns.wipes=$.extend(ns.wipes,fromCenters());
 
   //pyramid animations
   function pyramids(){
@@ -89,35 +85,33 @@
       },
       pyramidInvertedGrow:function(el){
         var endHeight=el.height();
-        opts=$.extend(opts,{
+        opts=$.extend({
           from:{
-            height:"0px",
             bottom:"0px",
             top:"auto"
           },
           to:{
             height:endHeight + "px"
           }
-        });
+        },opts);
         wipe=new factory(el,opts);
         _run(true);
       },
       pyramidGrow:function(el){
         var endHeight=el.height();
-        opts=$.extend(opts,{
+        opts=$.extend({
           from:{
-            height:"0px",
             bottom:"0px",
             top:"auto"
           },
           to:{
             height:endHeight + "px"
           }
-        });
+        },opts);
         wipe=new factory(el,opts);
         _run();
       }
     };
   }
 
-  ns.wipes=$.extend(ns.wipes,pyramids());
+  ns.wipes=$.extend(ns.wipes,pyramids(),fromCenters(),diagonals());
