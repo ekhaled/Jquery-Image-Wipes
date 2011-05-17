@@ -60,72 +60,64 @@
 
   ns.wipes=$.extend(ns.wipes,fromCenters());
 
-  $.fn.wipeImages.wipes=$.extend($.fn.wipeImages.wipes,{
-
-    pyramidInvertedCollapse:function(el){
-      var endHeight=el.height(),opts={
-        cols:19,rows:1,
-        from:{
-          height:"0px"
-        },
-        to:{
-          height:endHeight + "px"
-        }
-      };
-      var wipe=new factory(el,opts);
+  //pyramid animations
+  function pyramids(){
+    var opts={
+      cols:19,rows:1,
+      from:{
+        height:"0px"
+      }
+    },wipe;
+    function _run(wipe,rev){
+      wipe.isGrouped=true;
       wipe.groups=groupCentrally(opts.rows,opts.cols);
-      wipe.isGrouped=true;
-      wipe.run();
-    },
-    pyramidCollapse:function(el){
-      var endHeight=el.height(),opts={
-        cols:19,rows:1,
-        from:{
-          height:"0px"
-        },
-        to:{
-          height:endHeight + "px"
-        }
-      };
-      var wipe=new factory(el,opts);
-      wipe.groups=groupCentrally(opts.rows,opts.cols).reverse();
-      wipe.isGrouped=true;
-      wipe.run();
-    },
-    pyramidInvertedGrow:function(el){
-      var endHeight=el.height(),opts={
-        cols:19,rows:1,
-        from:{
-          height:"0px",
-          bottom:"0px",
-          top:"auto"
-        },
-        to:{
-          height:endHeight + "px"
-        }
-      };
-      var wipe=new factory(el,opts);
-      wipe.groups=groupCentrally(opts.rows,opts.cols).reverse();
-      wipe.isGrouped=true;
-      wipe.run();
-    },
-    pyramidGrow:function(el){
-      var endHeight=el.height(),opts={
-        cols:19,rows:1,
-        from:{
-          height:"0px",
-          bottom:"0px",
-          top:"auto"
-        },
-        to:{
-          height:endHeight + "px"
-        }
-      };
-      var wipe=new factory(el,opts);
-      wipe.groups=groupCentrally(opts.rows,opts.cols);
-      wipe.isGrouped=true;
+      if(rev) {wipe.groups.reverse();}
       wipe.run();
     }
+    return {
+      pyramidInvertedCollapse:function(el){
+        var endHeight=el.height();
+        opts.to={height:endHeight + "px"};
+        wipe=new factory(el,opts);
+        _run(wipe);
+      },
+      pyramidCollapse:function(el){
+        var endHeight=el.height();
+        opts.to={height:endHeight + "px"};
+        wipe=new factory(el,opts);
+        _run(wipe,true);
+      },
+      pyramidInvertedGrow:function(el){
+        var endHeight=el.height();
+        opts=$.extend(opts,{
+          from:{
+            height:"0px",
+            bottom:"0px",
+            top:"auto"
+          },
+          to:{
+            height:endHeight + "px"
+          }
+        });
+        wipe=new factory(el,opts);
+        _run(wipe,true);
+      },
+      pyramidGrow:function(el){
+        var endHeight=el.height();
+        opts=$.extend(opts,{
+          from:{
+            height:"0px",
+            bottom:"0px",
+            top:"auto"
+          },
+          to:{
+            height:endHeight + "px"
+          }
+        });
+        wipe=new factory(el,opts);
+        _run(wipe);
+      }
+    };
+  }
 
-
-  });
+  ns.wipes=$.extend(ns.wipes,pyramids());
