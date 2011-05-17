@@ -41,7 +41,7 @@
     },wipe;
     function _run(wipe,rev){
       wipe.isGrouped=true;
-      wipe.groups=groupCentrally(opts.rows,opts.cols,rev);
+      wipe.groups=groupCentrally(opts.rows,opts.cols);
       if(rev) {wipe.groups.reverse();}
       wipe.run();
     }
