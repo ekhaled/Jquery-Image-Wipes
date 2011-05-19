@@ -101,11 +101,11 @@ task :dist do
   src, target = File.join(DIST_DIR,'_jquery.imagewipes.js'), File.join(DIST_DIR,'jquery.imagewipes.js')
   uglifyjs src, target
   process_minified src, target
-  rm_rf File.join(DIST_DIR,'_jquery.imagewipes.js')
+  #rm_rf File.join(DIST_DIR,'_jquery.imagewipes.js')
   src, target = File.join(DIST_DIR,'_extendedWipes.js'), File.join(DIST_DIR,'extendedWipes.js')
   uglifyjs src, target
   process_minified src, target
-  rm_rf File.join(DIST_DIR,'_extendedWipes.js')
+  #rm_rf File.join(DIST_DIR,'_extendedWipes.js')
 end
 
 
