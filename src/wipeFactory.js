@@ -1,10 +1,8 @@
-(function($){
-  var namespace=$.fn.wipeImages,
-  wipeFactory=function(el,opts){
+var wipeFactory=function(el,opts){
     var _this=this;
     _this.el=el;
-    _this.config=namespace.config;
-    _this.images=namespace.images.srcs;
+    _this.config=config;
+    _this.images=wipeImages.srcs;
     _this.isGrouped=false;
 
     _this.setUpVars=$.extend({
@@ -20,19 +18,19 @@
       }
     },opts);
 
-    var len=_this.images.length,
-    current=namespace.images.current;
+    var len=wipeImages.length,
+    current=wipeImages.current;
     current++;
     if(current > (len-1)){
       current=0;
     }
     _this.setUpVars.img=_this.images[current];
-    namespace.images.current=current;
+    wipeImages.current=current;
 
     _this._createSlices();
 
     _this.slices=_this.el.find("." + this.config.className);
-    namespace.config.animating=true;
+    config.animating=true;
   }
   wipeFactory.prototype={
     _createSlices:function(){

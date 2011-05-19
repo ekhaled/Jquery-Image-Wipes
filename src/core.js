@@ -1,27 +1,17 @@
 (function($){
   $.fn.wipeImages=function(opts){
-    return init.apply(this,[opts]);
-  }
-  var namespace=$.fn.wipeImages;
-
-  function init(opts){
-    namespace.config=$.extend(namespace.config,opts);
-    namespace.config.animating=false;// flag to check if animation is running
-    namespace.config.className=namespace.config.className || "wipebox";// make sure a class name is set
-    namespace.pausePlaying=false;
-    namespace.images=[];
-		return start(this);
-  }
-
-  function start(el){
-    var opts=namespace.config,
-    wipes=namespace.wipes,wipeString=[];
+    var namespace=$.fn.wipeImages,
+    config=$.extend(namespace.config,opts),
+    config.animating=false,// flag to check if animation is running
+    config.className=config.className || "wipebox",// make sure a class name is set
+    pausePlaying=false,
+    wipes=namespace.wipes,wipeImages={},wipeString=[];
 
     for(var k in wipes){
       wipeString.push(k);
     };
 
-    return el.each(function(){
+    return this.each(function(){
       var _this=$(this).css({position:"relative"}),
       imgs=_this.find("img"),srcs=[];
 
@@ -29,32 +19,32 @@
         srcs.push($(this).attr("src"));
       });
 
-      namespace.images.srcs=srcs;
-      namespace.images.current=0;
+      wipeImages.srcs=srcs;
+      wipeImages.current=0;
 
 
       imgs.filter(":gt(0)").hide();
 
-      if(opts.pauseOnHover){
+      if(config.pauseOnHover){
         _this
         .bind("mouseenter",function(){
-  				namespace.pausePlaying=true;
+  				pausePlaying=true;
   			})
   			.bind("mouseleave",function(){
-  				namespace.pausePlaying=false;
+  				pausePlaying=false;
   			});
       }
 
-      if(opts.autoPlay){
+      if(config.autoPlay){
         setInterval(function(){
-          if(!namespace.pausePlaying && !namespace.config.animating){
+          if(!pausePlaying && !config.animating){
             run();
           }
-        },opts.delay)
+        },config.delay)
       }
 
       function run(){
-        var animation=animation||opts.animations,
+        var animation=animation||config.animations,
         toUse=animation;
         if(animation=="random"){
           toUse=wipeString[Math.floor(Math.random()*wipeString.length)];
@@ -78,7 +68,6 @@
 
   }
 
-
   $.fn.wipeImages.config={
 		animations:"random", // accepts "random" or wipe name as string  e.g "verticalStrips" or wipe names as array eg ["fade","someOtherWipe"]
 		autoPlay:true,
@@ -88,5 +77,3 @@
 		pauseOnHover:false, // pauses the animation when mouse is hovered
 		className:"wipebox" // the class name applied to all appended boxes
 	}
-
-})(jQuery);
