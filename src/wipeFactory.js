@@ -159,5 +159,3 @@ var wipeFactory=function(el,opts){
       wipe.run();
     }
   };
-
-})(jQuery);

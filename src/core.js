@@ -1,16 +1,3 @@
-(function($){
-  $.fn.wipeImages=function(opts){
-    var namespace=$.fn.wipeImages,
-    config=$.extend(namespace.config,opts),
-    config.animating=false,// flag to check if animation is running
-    config.className=config.className || "wipebox",// make sure a class name is set
-    pausePlaying=false,
-    wipes=namespace.wipes,wipeImages={},wipeString=[];
-
-    for(var k in wipes){
-      wipeString.push(k);
-    };
-
     return this.each(function(){
       var _this=$(this).css({position:"relative"}),
       imgs=_this.find("img"),srcs=[];
@@ -64,16 +51,3 @@
         }
 
       }
-    });
-
-  }
-
-  $.fn.wipeImages.config={
-		animations:"random", // accepts "random" or wipe name as string  e.g "verticalStrips" or wipe names as array eg ["fade","someOtherWipe"]
-		autoPlay:true,
-		delay:5000,
-		duration:400,// duration of animation
-		easing:"swing",
-		pauseOnHover:false, // pauses the animation when mouse is hovered
-		className:"wipebox" // the class name applied to all appended boxes
-	}
