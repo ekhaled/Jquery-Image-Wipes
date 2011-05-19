@@ -1,5 +1,6 @@
 (function($){
-  var namespace = $.fn.wipeImages = function(opts){
+
+  var wipeImages=function(opts){
     var config=$.extend(namespace.config,opts),
     pausePlaying=false,
     wipeImages={};
