@@ -10,8 +10,8 @@ PKG_DIR  = File.join(ROOT, 'pkg')
 
 CORE_FILES    = [
   File.join(SRC_DIR,'intro.js'),
-  File.join(SRC_DIR,'core.js'),
   File.join(SRC_DIR,'wipeFactory.js'),
+  File.join(SRC_DIR,'core.js'),
   File.join(SRC_DIR,'outro.js'),
   File.join(SRC_DIR,'basicWipes.js'),
 ]

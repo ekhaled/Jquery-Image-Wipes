@@ -21,3 +21,38 @@
   				pausePlaying=false;
   			});
       }
+      if(config.autoPlay){
+        setInterval(function(){
+          if(!pausePlaying && !config.animating){
+            run();
+          }
+        },config.delay)
+      }
+
+      function run(){
+        var wipes=$.fn.wipeImages.wipes,wipeString=[],
+        animation=animation||config.animations,
+        toUse=animation;
+        for(var k in wipes){
+          wipeString.push(k);
+        };
+        if(animation=="random"){
+          toUse=wipeString[Math.floor(Math.random()*wipeString.length)];
+        }else{
+          if($.isArray(animation)){
+            var _a=Math.floor(Math.random()*animation.length);
+            toUse=animation[_a];
+          }else{
+            toUse=animation;
+          }
+        }
+
+        if(wipes[toUse]){
+          wipes[toUse](_this);
+        }else{
+          wipes["default"](_this);
+        }
+
+      }
+
+    });
