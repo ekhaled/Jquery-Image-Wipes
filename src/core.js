@@ -31,8 +31,12 @@
       }
 
       function run(){
-        var animation=animation||config.animations,
+        var wipes=$.fn.wipeImages.wipes,wipeString=[],
+        animation=animation||config.animations,
         toUse=animation;
+        for(var k in wipes){
+          wipeString.push(k);
+        };
         if(animation=="random"){
           toUse=wipeString[Math.floor(Math.random()*wipeString.length)];
         }else{

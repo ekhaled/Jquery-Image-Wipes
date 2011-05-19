@@ -1,5 +1,5 @@
 (function($){
-  var ns=$.fn.wipeImages,factory=ns.wipeFactory;
+  var factory=$.fn.wipeImages.wipeFactory;
   $.fn.wipeImages.wipes=$.extend($.fn.wipeImages.wipes,{
 
     blindRight:function(el){
