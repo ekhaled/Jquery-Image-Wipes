@@ -41,11 +41,11 @@ html[xmlns] .clearfix {
 	height: 1%;
 }
 #wrapper{
-	width:900px;
-	margin:0 auto;
+	width:839px;
+	margin:10px auto;
 }
 #imagesHolder{
-  width:900px;
-  height:600px;
+  width:839px;
+  height:318px;
   overflow:hidden;
 }
