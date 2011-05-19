@@ -83,7 +83,7 @@ var wipeFactory=function(el,opts){
     },
     cleanup:function(){
       var _this=this;
-      namespace.config.animating=false;
+      config.animating=false;
       _this.el.append("<img src='"+_this.setUpVars.img+"'>");
       if(_this.isGrouped){
         var i,j,l=_this.slices.length;
