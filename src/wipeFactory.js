@@ -8,8 +8,8 @@
       _this.setUpVars=$.extend({
         cols:1,
         rows:1,
-        duration:this.config.duration,
-        easing:this.config.easing,
+        duration:_this.config.duration,
+        easing:_this.config.easing,
         from:{
           opacity:0
         },
@@ -29,7 +29,7 @@
 
       _this._createSlices();
 
-      _this.slices=_this.el.find("." + this.config.className);
+      _this.slices=_this.el.find("." + _this.config.className);
       config.animating=true;
     };
 
