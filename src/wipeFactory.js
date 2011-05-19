@@ -1,4 +1,4 @@
-    var wipeFactory=function(el,opts){
+    function wipeFactory(el,opts){
       var _this=this;
       _this.el=el;
       _this.config=config;
