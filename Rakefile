@@ -71,13 +71,29 @@ def uglifyjs(src, target)
     if verbose
       puts "\nYou'll need the 'uglifier' gem for minification. Just run:\n\n"
       puts "  $ gem install uglifier"
-      puts "\nand you should be all set.\n\n"
-      exit
+      puts "\nTrying the online version\n\n"
+      uglifyjs_online src, target
     end
     return false
   end
   puts "Minifying #{src} with UglifyJS..."
   File.open(target, "w"){|f| f.puts Uglifier.new.compile(File.read(src))}
+end
+
+def uglifyjs_online(src, target)
+  require 'net/http'
+  url = URI.parse('http://marijnhaverbeke.nl/uglifyjs')
+  req = Net::HTTP::Post.new(url.path)
+  req.set_form_data({'js_code' => File.read(src)}, ';')
+  res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
+  case res
+  when Net::HTTPSuccess, Net::HTTPRedirection
+    puts "Minifying #{src} with UglifyJS_online..."
+    File.open(target, "w"){|f| f.puts res.body}
+  else
+    puts res.error!
+    exit
+  end
 end
 
 def process_minified(src, target)
