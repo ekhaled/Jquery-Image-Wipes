@@ -8,7 +8,7 @@
     },wipe;
     function _run(rev1,rev2){
       wipe.isGrouped=true;
-      wipe.groups=groupDiagonally(opts.rows,opts.cols,rev1);
+      wipe.groups=wipe.groupDiagonally(opts.rows,opts.cols,rev1);
       if(rev2) {wipe.groups.reverse();}
       wipe.run();
     }
@@ -39,7 +39,7 @@
     },wipe;
     function _run(rev){
       wipe.isGrouped=true;
-      wipe.groups=groupCentrally(opts.rows,opts.cols);
+      wipe.groups=wipe.groupCentrally(opts.rows,opts.cols);
       if(rev) {wipe.groups.reverse();}
       wipe.run();
     }
@@ -66,7 +66,7 @@
     },wipe;
     function _run(rev){
       wipe.isGrouped=true;
-      wipe.groups=groupCentrally(opts.rows,opts.cols);
+      wipe.groups=wipe.groupCentrally(opts.rows,opts.cols);
       if(rev) {wipe.groups.reverse();}
       wipe.run();
     }
