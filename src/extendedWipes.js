@@ -114,4 +114,31 @@
     };
   }
 
-  ns.wipes=$.extend(ns.wipes,pyramids(),fromCenters(),diagonals());
+  //CSS3 animations - Experimental
+  function css3s(){
+    var opts={
+      cols:4,rows:4,
+      isCss3:true,
+    },wipe;
+    function _run(shfl,rev){
+      if(rev) {wipe.groups.reverse();}
+      if(shfl) {wipe.groups.shuffle();}
+      wipe.run();
+    }
+    return{
+      css3_ZoomIn:function(el){
+        opts.from=$.extend({"opacity":0},ns.prefixize("transform","scale(0.1)"));
+        opts.to=$.extend({"opacity":1},ns.prefixize("transform","scale(1)"));
+        wipe=new factory(el,opts);
+        _run();
+      },
+      css3_ZoomOut:function(el){
+        opts.from=$.extend({"opacity":0},ns.prefixize("transform","scale(1.5)"));
+        opts.to=$.extend({"opacity":1},ns.prefixize("transform","scale(1)"));
+        wipe=new factory(el,opts);
+        _run();
+      }
+    }
+  }
+
+  ns.wipes=$.extend(ns.wipes,pyramids(),fromCenters(),diagonals(),css3s());
