@@ -41,13 +41,13 @@ groupDiagonally=function(r,c,rev){
 
   if(rev){
     for (var i = 1 - r; i < c; i++) {
-	    var group = [];
-	    for (var j = 0; j < r; j++) {
-		    if ((i + j) >= 0 && (i + j) < c) {
-			    group.push(arr[j][i + j]);
-		    }
-	    }
-	    grouped.push(group);
+      var group = [];
+      for (var j = 0; j < r; j++) {
+        if ((i + j) >= 0 && (i + j) < c) {
+          group.push(arr[j][i + j]);
+        }
+      }
+      grouped.push(group);
     }
   }else{
     for (var i = 0; i < r + c - 1; i++) {

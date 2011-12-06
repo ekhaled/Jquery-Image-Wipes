@@ -40,37 +40,37 @@
       className=_this.config.className,
       e_wd=el.width(),e_ht=el.height(),
       setUpVars=_this.setUpVars,
-		  wd=Math.round(e_wd/setUpVars.cols),
-		  ht=Math.round(e_ht/setUpVars.rows),from={};
+      wd=Math.round(e_wd/setUpVars.cols),
+      ht=Math.round(e_ht/setUpVars.rows),from={};
 
-		  for(var r = 0; r < setUpVars.rows; r++){
-		    for(var c= 0; c < setUpVars.cols; c++){
-		      from=$.extend({
-	          left:(wd*c) + "px",
+      for(var r = 0; r < setUpVars.rows; r++){
+        for(var c= 0; c < setUpVars.cols; c++){
+          from=$.extend({
+            left:(wd*c) + "px",
             top: (ht*r) + "px",
             height: (ht) + "px",
-	        },setUpVars.from);
-		      if(c==setUpVars.cols-1){
-		        from=$.extend({
+          },setUpVars.from);
+          if(c==setUpVars.cols-1){
+            from=$.extend({
               width: (e_wd - (wd*c)) + "px"
-		        },from);
-	        }else{
-	          from=$.extend({
+            },from);
+          }else{
+            from=$.extend({
               width: (wd) + "px"
-		        },from);
-	        }
-	        el.append(
-	          $("<div>",{
-	            "class":className,
-	            css:{
-	              position: "absolute",
-	              background: 'url("'+ setUpVars.img +'") no-repeat -'+ ((wd + (c * wd)) - wd) +'px -'+ ((ht + (r * ht)) - ht) +'px'
-	            }
-	          }).css(from)
-	        );
+            },from);
+          }
+          el.append(
+            $("<div>",{
+              "class":className,
+              css:{
+                position: "absolute",
+                background: 'url("'+ setUpVars.img +'") no-repeat -'+ ((wd + (c * wd)) - wd) +'px -'+ ((ht + (r * ht)) - ht) +'px'
+              }
+            }).css(from)
+          );
 
-		    }
-		  }
+        }
+      }
     },
      _animate:function(slice,to,duration,easing,index,total,buffer,callback){
       (function(slice,to,duration,easing,index,total,buffer,callback){
