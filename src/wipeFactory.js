@@ -6,12 +6,14 @@
     _this.config=namespace.config;
     _this.images=namespace.images.srcs;
     _this.isGrouped=false;
+    _this.prefixes=["ms","moz","webkit","o"];
 
     _this.setUpVars=$.extend({
       cols:1,
       rows:1,
       duration:this.config.duration,
       easing:this.config.easing,
+      isCss3:false,
       from:{
         opacity:0
       },
@@ -72,16 +74,33 @@
         }
       }
     },
-     _animate:function(slice,to,duration,easing,index,total,buffer,callback){
-      (function(slice,to,duration,easing,index,total,buffer,callback){
+     _animate:function(slice,index,total,buffer,callback){
+       var _this=this,
+       to=_this.setUpVars.to,
+       duration=_this.setUpVars.duration,
+       easing=_this.setUpVars.easing;
+      (function(slice,index,total,buffer,callback){
         setTimeout(function(){
-          slice.animate(to,duration,easing,function(){
-            if(index==(total-1)){
-              callback();
+          if(_this.setUpVars.isCss3){
+            _temp={};
+            for(var i=0;i<_this.prefixes.length;i++){
+              _temp["-"+_this.prefixes[i]+"-transition-property"]="all";
+              _temp["-"+_this.prefixes[i]+"-transition-duration"]=duration/1000 + "s";
             }
-          })
+            if(index==(total-1)){
+              setTimeout(callback,duration);
+            }
+            slice.css(_temp);
+            slice.css(to);
+          }else{
+            slice.animate(to,duration,easing,function(){
+              if(index==(total-1)){
+                callback();
+              }
+            })
+          }
         },buffer);
-      })(slice,to,duration,easing,index,total,buffer,callback);
+      })(slice,index,total,buffer,callback);
     },
     cleanup:function(){
       var _this=this;
@@ -122,8 +141,7 @@
             slice=slice.add(_this.slices.eq(grp.shift()));
           }
           buffer +=increment;
-          _this._animate(slice,_this.setUpVars.to,
-            _this.setUpVars.duration,_this.setUpVars.easing,
+          _this._animate(slice,
             i,l,buffer,
             function(){_this.cleanup();});
         }
@@ -131,8 +149,7 @@
         _this.slices.each(function(idx){
           var slice=$(this);
           buffer +=increment;
-          _this._animate(slice,_this.setUpVars.to,
-            _this.setUpVars.duration,_this.setUpVars.easing,
+          _this._animate(slice,
             idx,_this.slices.length,buffer,
             function(){_this.cleanup();});
         });
