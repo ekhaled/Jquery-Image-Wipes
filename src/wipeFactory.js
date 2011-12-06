@@ -21,7 +21,7 @@
     _this.config=namespace.config;
     _this.images=namespace.images.srcs;
     _this.isGrouped=false;
-    _this.prefixes=["ms","moz","webkit","o"];
+    _this.prefixes=["ms","moz","webkit","o",""];
 
     _this.setUpVars=$.extend({
       cols:1,
@@ -99,8 +99,9 @@
           if(_this.setUpVars.isCss3){
             _temp={};
             for(var i=0;i<_this.prefixes.length;i++){
-              _temp["-"+_this.prefixes[i]+"-transition-property"]="all";
-              _temp["-"+_this.prefixes[i]+"-transition-duration"]=duration/1000 + "s";
+              var prfx=_this.prefixes[i],dash=(prfx!=""?"-":"");
+              _temp[dash+prfx+dash+"transition-property"]="all";
+              _temp[dash+prfx+dash+"transition-duration"]=duration/1000 + "s";
             }
             if(index==(total-1)){
               setTimeout(callback,duration);
