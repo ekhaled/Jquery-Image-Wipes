@@ -78,6 +78,16 @@
 
   }
 
+  namespace.prefixes=["ms","moz","webkit","o",""];
+  namespace.prefixize=function(prop,val){
+    var _this=namespace,_temp={};
+    for(var i=0;i<_this.prefixes.length;i++){
+      var prfx=_this.prefixes[i],dash=(prfx!=""?"-":"");
+      _temp[dash+prfx+dash+prop]=val;
+    }
+    return _temp;
+  };
+
 
   $.fn.wipeImages.config={
     animations:"random", // accepts "random" or wipe name as string  e.g "verticalStrips" or wipe names as array eg ["fade","someOtherWipe"]

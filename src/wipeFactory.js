@@ -97,9 +97,8 @@
       (function(slice,index,total,buffer,callback){
         setTimeout(function(){
           if(_this.setUpVars.isCss3){
-            _temp=$.extend(_this.prefixize("transition-property","all"),
-            _this.prefixize("transition-duration",duration/1000 + "s"));
-            console.log(_temp);
+            _temp=$.extend(namespace.prefixize("transition-property","all"),
+            namespace.prefixize("transition-duration",duration/1000 + "s"));
             if(index==(total-1)){
               setTimeout(callback,duration);
             }
@@ -166,15 +165,6 @@
       this.play();
     },
 
-
-    prefixize:function(prop,val){
-      var _this=this,_temp={};
-      for(var i=0;i<_this.prefixes.length;i++){
-        var prfx=_this.prefixes[i],dash=(prfx!=""?"-":"");
-        _temp[dash+prfx+dash+prop]=val;
-      }
-      return _temp;
-    },
     reverse:function(){
       this.slices=[].reverse.apply(this.slices);
     },
