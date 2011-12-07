@@ -127,7 +127,7 @@
         break;
       }
     };
-    if(support) return {};
+    if(!support) return {};
     //end support
     var opts={
       cols:4,rows:4,
@@ -151,9 +151,17 @@
         wipe=new factory(el,opts);
         _run();
       },
-      css3_rotate:function(el){
+      css3_rotateIn:function(el){
         opts.from=$.extend({"opacity":0},ns.prefixize("transform","rotate(90deg)"));
         opts.to=$.extend({"opacity":1},ns.prefixize("transform","rotate(0)"));
+        opts.cols=6;opts.rows=6;
+        wipe=new factory(el,opts);
+        _run();
+      },
+      css3_rotateOut:function(el){
+        opts.layerOn=false;
+        opts.from=$.extend({"opacity":1},ns.prefixize("transform","rotate(0)"));
+        opts.to=$.extend({"opacity":0},ns.prefixize("transform","rotate(90deg)"));
         opts.cols=6;opts.rows=6;
         wipe=new factory(el,opts);
         _run();
