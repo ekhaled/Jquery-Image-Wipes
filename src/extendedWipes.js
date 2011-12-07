@@ -137,6 +137,13 @@
         opts.to=$.extend({"opacity":1},ns.prefixize("transform","scale(1)"));
         wipe=new factory(el,opts);
         _run();
+      },
+      css3_rotate:function(el){
+        opts.from=$.extend({"opacity":0},ns.prefixize("transform","rotate(90deg)"));
+        opts.to=$.extend({"opacity":1},ns.prefixize("transform","rotate(0)"));
+        opts.cols=6;opts.rows=6;
+        wipe=new factory(el,opts);
+        _run();
       }
     }
   }
