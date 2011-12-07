@@ -146,8 +146,9 @@
         _run();
       },
       css3_ZoomOut:function(el){
-        opts.from=$.extend({"opacity":0},ns.prefixize("transform","scale(1.5)"));
-        opts.to=$.extend({"opacity":1},ns.prefixize("transform","scale(1)"));
+        opts.layerOn=false;
+        opts.from=$.extend({"opacity":1},ns.prefixize("transform","scale(1)"));
+        opts.to=$.extend({"opacity":0},ns.prefixize("transform","scale(0.1)"));
         wipe=new factory(el,opts);
         _run();
       },
