@@ -116,6 +116,19 @@
 
   //CSS3 animations - Experimental
   function css3s(){
+    //check support first
+    var thisBody = document.body || document.documentElement,
+    thisStyle = thisBody.style,
+    support=false;
+    for (var i = ns.prefixes.length - 1; i >= 0; i--){
+      var pf=ns.prefixes[i].charAt(0).toUpperCase() + ns.prefixes[i].substr(1);
+      if(thisStyle[pf+(pf!=""?"T":"t")+"ransition"]!== undefined ){
+        support=true;
+        break;
+      }
+    };
+    if(support) return {};
+    //end support
     var opts={
       cols:4,rows:4,
       isCss3:true,
